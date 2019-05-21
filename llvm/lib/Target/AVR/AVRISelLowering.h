@@ -127,6 +127,11 @@ public:
   unsigned getRegisterByName(const char* RegName, EVT VT,
                              SelectionDAG &DAG) const override;
 
+  bool shouldSplitFunctionArgumentsAsLittleEndian(const DataLayout &DL)
+    const override {
+    return false;
+  }
+
 private:
   SDValue getAVRCmp(SDValue LHS, SDValue RHS, ISD::CondCode CC, SDValue &AVRcc,
                     SelectionDAG &DAG, SDLoc dl) const;
